@@ -42,14 +42,15 @@ public class WorkoutDetailFragment extends Fragment {
 
         }
     }
-
+    //automatically call by system during fragment onDestroy call
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putLong("workoutId",workoutId);
     }
     //set fragment Id
-    public void setWorkoutId(long id) {
+    public void setWorkout(long id) {
         this.workoutId = id;
+
     }
 
 

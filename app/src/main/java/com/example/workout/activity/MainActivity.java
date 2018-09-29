@@ -1,8 +1,10 @@
 package com.example.workout.activity;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.workout.R;
 import com.example.workout.fragment.WorkoutDetailFragment;
@@ -20,12 +22,20 @@ public class MainActivity extends AppCompatActivity implements WorkoutListFragme
     @Override
     public void itemClicked(long id) {
 
-        WorkoutDetailFragment details=new WorkoutDetailFragment();
-        FragmentTransaction fragmentTransaction =getFragmentManager().beginTransaction();
-        details.setWorkoutId(id);
-        fragmentTransaction.replace(R.id.fragment_container,details);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragmentTransaction.commit();
+        View fragmentContainer=findViewById(R.id.fragment_container);
+        if(fragmentContainer!=null) {
+            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            details.setWorkout(id);
+            fragmentTransaction.replace(R.id.fragment_container, details);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
+        }
+        else{
+            Intent intent=new Intent(this,DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID,(int)id);
+            startActivity(intent);
+        }
     }
 }
