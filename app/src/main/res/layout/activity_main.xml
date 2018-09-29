@@ -6,11 +6,18 @@
     android:orientation="horizontal"
     >
 
-    <!-- TODO: Update blank fragment layout -->
+
     <fragment
-        class="com.example.workout.fragment.WorkoutDetailFragment"
-        android:id="@+id/detail_frag"
-        android:layout_width = "match_parent"
+        class="com.example.workout.fragment.WorkoutListFragment"
+        android:id="@+id/list_frag"
+        android:layout_width = "0dp"
+        android:layout_weight="2"
+        android:layout_height = "match_parent"/>
+    <FrameLayout
+
+        android:id="@+id/fragment_container"
+        android:layout_width = "0dp"
+        android:layout_weight="3"
         android:layout_height = "match_parent"
 
         />
