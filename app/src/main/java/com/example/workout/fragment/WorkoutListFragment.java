@@ -36,6 +36,7 @@ public class WorkoutListFragment extends ListFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
         this.listener=(WorkoutListListener)activity;
 
     }
